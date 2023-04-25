@@ -10,7 +10,27 @@
 
 热身部分是为了不熟悉 `racket` 的读者写的一些语法知识，帮助他们读完这篇文章。对 `racket` 或者是 `lisp` 类语言有所了解的读者可以跳过这一部分。
 
-todo
+```
+; 注释
+
+; 定义变量
+(define a 10)
+
+; lambda 函数
+(lambda (param1 param2) (+ param1 param2))
+
+; 定义函数
+(define (foo x) (+ x 1))
+
+; 定义函数，且对输入输出进行检查
+(define/contract (foo x y)
+; 要求 x y 为 number 返回值也为 number
+; 即 (number? x) 返回 true
+  (-> number? number? number?)
+  (+ x y))
+
+; 'hello 是一个 symbol 可以理解为一个特殊的字符串
+```
 
 ## 副作用与纯函数
 
@@ -273,11 +293,11 @@ $$
   ; 定义一个初始值为 1 的变量
   (bind (def 1)
     ; 将该变量命名为 x
-    (λ (x)
+    (lambda (x)
       ; 定义一个初始值为 2 的变量
       (bind (def 2)
         ; 将该变量命名为 y
-        (λ (y)
+        (lambda (y)
           ; 定义一个变量值为 x + y
           (add x y))))))
 

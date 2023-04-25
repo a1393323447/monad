@@ -113,9 +113,9 @@
 
 (define prog3
   (bind (def 1)
-    (lambda (x)
+    (λ (x)
       (bind (def 2)
-        (lambda (y)
+        (λ (y)
           (add x y))))))
 
 (check-equal? (run-state prog3) expected-heap)
